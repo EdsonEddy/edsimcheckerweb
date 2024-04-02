@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openSidebarMenu } from "../hooks/menuActions";
 
 const MenuAppBar = () => {
-  const open = useSelector((state) => state.isOpen);
+  const open = useSelector((state) => state.menu.isOpenSidebarMenu);
   const dispatch = useDispatch();
 
   return (

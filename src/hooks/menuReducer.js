@@ -1,8 +1,10 @@
 import { OPEN_SIDEBAR_MENU, OPEN_LANGUAGE_MENU } from "./menuActionTypes";
 
 const initialState = {
-  isOpenSidebarMenu: false,
-  isOpenLanguageMenu: false,
+  menu: {
+    isOpenSidebarMenu: false,
+    isOpenLanguageMenu: false,
+  }
 };
 
 const menuReducer = (state = initialState, action) => {
@@ -10,12 +12,18 @@ const menuReducer = (state = initialState, action) => {
     case OPEN_SIDEBAR_MENU:
       return {
         ...state,
-        isOpenSidebarMenu: !state.isOpenSidebarMenu,
+        menu: {
+          ...state.menu,
+          isOpenSidebarMenu: !state.menu.isOpenSidebarMenu,
+        }
       };
     case OPEN_LANGUAGE_MENU:
       return {
         ...state,
-        isOpenLanguageMenu: !state.isOpenLanguageMenu,
+        menu: {
+          ...state.menu,
+          isOpenLanguageMenu: !state.menu.isOpenLanguageMenu,
+        }
       };
     default:
       return state;

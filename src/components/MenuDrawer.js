@@ -27,7 +27,7 @@ import { openSidebarMenu } from "../hooks/menuActions";
 
 const MenuDrawer = () => {
   const theme = useTheme();
-  const open = useSelector((state) => state.isOpenSidebarMenu);
+  const open = useSelector((state) => state.menu.isOpenSidebarMenu);
   const dispatch = useDispatch();
 
   return (
