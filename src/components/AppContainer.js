@@ -7,15 +7,15 @@ import { Provider } from "react-redux";
 import store from "../hooks/store";
 
 const AppContainer = () => {
-	return (
-		<Provider store={store}>
-			<Box sx={{ display: "flex" }}>
-				<CssBaseline />
-				<MenuAppBar />
-				<MenuDrawer />
-				<ContentBox />
-			</Box>
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <MenuAppBar />
+        <MenuDrawer />
+        <ContentBox />
+      </Box>
+    </Provider>
+  );
 };
 export default AppContainer;

@@ -1,19 +1,25 @@
-import { TOGGLE_MENU } from "./menuActionTypes";
+import { OPEN_SIDEBAR_MENU, OPEN_LANGUAGE_MENU } from "./menuActionTypes";
 
 const initialState = {
-	isOpen: false,
+  isOpenSidebarMenu: false,
+  isOpenLanguageMenu: false,
 };
 
 const menuReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case TOGGLE_MENU:
-			return {
-				...state,
-				isOpen: !state.isOpen,
-			};
-		default:
-			return state;
-	}
+  switch (action.type) {
+    case OPEN_SIDEBAR_MENU:
+      return {
+        ...state,
+        isOpenSidebarMenu: !state.isOpenSidebarMenu,
+      };
+    case OPEN_LANGUAGE_MENU:
+      return {
+        ...state,
+        isOpenLanguageMenu: !state.isOpenLanguageMenu,
+      };
+    default:
+      return state;
+  }
 };
 
 export default menuReducer;
