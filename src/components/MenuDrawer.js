@@ -23,7 +23,14 @@ import {
   DrawerHeader as CustomDrawerHeader,
 } from "../utils/menu";
 import { useDispatch, useSelector } from "react-redux";
-import { openSidebarMenu } from "../hooks/menuActions";
+import { changeActualContent, openSidebarMenu } from "../hooks/menuActions";
+
+import {
+  CODE_SECTION,
+  CONTACT_US_SECTION,
+  HELP_CENTER_SECTION,
+  sections,
+} from "../constants/menu";
 
 const MenuDrawer = () => {
   const theme = useTheme();
@@ -47,53 +54,95 @@ const MenuDrawer = () => {
       </CustomDrawerHeader>
       <Divider />
       <List>
-        {["Code"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
+        <ListItem key={sections.code} disablePadding sx={{ display: "block" }}>
+          <ListItemButton
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              onClick={() => {
+                dispatch(changeActualContent(CODE_SECTION));
+              }}
               sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
+                minWidth: 0,
+                mr: open ? 3 : "auto",
+                justifyContent: "center",
               }}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                <CodeIcon />
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+              <CodeIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary={sections.code}
+              sx={{ opacity: open ? 1 : 0 }}
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
       <Divider />
       <List>
-        {["Help Center", "Contact us"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
+        <ListItem
+          key={sections.helpCenter}
+          disablePadding
+          sx={{ display: "block" }}
+        >
+          <ListItemButton
+            onClick={() => {
+              dispatch(changeActualContent(HELP_CENTER_SECTION));
+            }}
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
               sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
+                minWidth: 0,
+                mr: open ? 3 : "auto",
+                justifyContent: "center",
               }}
             >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
-                {index % 2 === 0 ? <HelpIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+              <HelpIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary={sections.helpCenter}
+              sx={{ opacity: open ? 1 : 0 }}
+            />
+          </ListItemButton>
+        </ListItem>
+        <ListItem
+          key={sections.contactUs}
+          disablePadding
+          sx={{ display: "block" }}
+        >
+          <ListItemButton
+            onClick={() => {
+              dispatch(changeActualContent(CONTACT_US_SECTION));
+            }}
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? "initial" : "center",
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : "auto",
+                justifyContent: "center",
+              }}
+            >
+              <MailIcon />
+            </ListItemIcon>
+            <ListItemText
+              primary={sections.contactUs}
+              sx={{ opacity: open ? 1 : 0 }}
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
     </CustomDrawer>
   );
