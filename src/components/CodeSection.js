@@ -2,14 +2,15 @@ import { Grid, Paper } from "@mui/material";
 import React, { useState } from "react";
 import MonacoEditor from "react-monaco-editor";
 import { AutoSizer } from "react-virtualized";
-import CodeSectionToolbar from "./CodeSectionToolbar";
+import TopToolbar from "./TopToolbar";
+import BottomToolbar from "./BottomToolbar";
 
 const CodeSection = () => {
   const [code1, setCode1] = useState("");
   const [code2, setCode2] = useState("");
   return (
     <>
-      <CodeSectionToolbar />
+      <TopToolbar />
       <Grid container spacing={2} sx={{ height: "200px" }}>
         <Grid item xs={12} sm={6}>
           <Paper sx={{ padding: "2em 0", width: "100%", height: "100%" }}>
@@ -60,6 +61,7 @@ const CodeSection = () => {
           </Paper>
         </Grid>
       </Grid>
+      <BottomToolbar />
     </>
   );
 };

@@ -6,7 +6,7 @@ import {
   languageOptions,
 } from "../constants/toolbar";
 
-const CodeSectionToolbar = () => {
+const TopToolbar = () => {
   const [language, setLanguage] = React.useState(defaultLanguage);
 
   const handleChange = (event) => {
@@ -25,8 +25,10 @@ const CodeSectionToolbar = () => {
           onChange={handleChange}
           sx={{ minWidth: "100px" }}
         >
-          {languageOptions.map((option) => (
-            <MenuItem value={option}>{option}</MenuItem>
+          {languageOptions.map((option, index) => (
+            <MenuItem key={index} value={option}>
+              {option}
+            </MenuItem>
           ))}
         </Select>
       </FormControl>
@@ -34,4 +36,4 @@ const CodeSectionToolbar = () => {
   );
 };
 
-export default CodeSectionToolbar;
+export default TopToolbar;
